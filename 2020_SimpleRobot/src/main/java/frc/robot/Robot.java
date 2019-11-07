@@ -21,8 +21,14 @@ import edu.wpi.first.wpilibj.drive.DifferentialDrive;
  */
 public class Robot extends TimedRobot {
 
-    private final DifferentialDrive differentialDrive = new DifferentialDrive(new PWMVictorSPX(0), new PWMVictorSPX(1));
+    // User Interface
     private final Joystick driverJoystick = new Joystick(0);
+
+    // Motors and Sensors
+    private final DifferentialDrive differentialDrive = 
+            new DifferentialDrive(new PWMVictorSPX(0), new PWMVictorSPX(1));
+    
+    // Other 
     private final Timer timer = new Timer();
 
     /**
