@@ -30,11 +30,23 @@ public class BasicTypes {
          * In this way, the comment can span a lot of lines.
          */
 
-        // *****************************************************************
-        /*
+        /* *****************************************************************
          * Native Types in Java (that we use commonly FRC)
-         */
-        // *****************************************************************
+         *
+         * Each native type has a paired helper class that can be used to
+         * get the maximum value for the native type, or to convert from
+         * a String to that type using the method valueOf();
+         *
+         * Native Type          Companion Class
+         * boolean              Boolean
+         * int                  Integer
+         * long                 Long
+         * double               Double
+         * char                 Character
+         * -                    String  (String is a class, not a native type)
+         *
+         * NOTE: there are more, but these are the ones used in FRC
+         * *****************************************************************/
 
         /*
          * Boolean
