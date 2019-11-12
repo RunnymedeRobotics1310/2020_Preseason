@@ -137,5 +137,20 @@ public class BasicTypes {
         // Uncomment the following line to try it.
         //System.out.println("The length of nullString is " + nullString.length());
 
+        /*
+         * Useful String methods
+         */
+        String s = "Test String";
+        System.out.println(s);
+
+        // Get the first character of a string
+        System.out.println("The first character is " + s.charAt(0));
+
+        // Split a string at the space
+        String [] subStrings = s.split(" ");
+        System.out.println("There are " + subStrings.length + " words");
+        System.out.println("The first word is " + subStrings[0]);
+        System.out.println("The second word is " + subStrings[1]);
+
     }
 }
