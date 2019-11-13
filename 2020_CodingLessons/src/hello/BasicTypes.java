@@ -11,12 +11,15 @@ public class BasicTypes {
         // Comments
 
         // A double slash // starts a comment at any point in the
-        // program.  Comments are a useful way to tell others
+        // program and it runs to the end of the line
+        int alphabetLength = 26;  // You can place a comment here
+
+        // Comments are a useful way to tell others
         // about the code that you are writing.  In a comment
         // it is important to say WHY you are writing this code
         // or DESCRIBE the overall step in the code.
 
-        // DO NOT WRITE a comment that tells you what you are
+        // DO NOT WRITE a comment that tells you WHAT you are
         // about to write in code.
 
         // Example of a bad comment:
@@ -31,7 +34,7 @@ public class BasicTypes {
          */
 
         /* *****************************************************************
-         * Native Types in Java (that we use commonly FRC)
+         * Native Types in Java (that we use commonly in FRC)
          *
          * Each native type has a paired helper class that can be used to
          * get the maximum value for the native type, or to convert from
@@ -64,7 +67,7 @@ public class BasicTypes {
          * Integers hold any whole number.
          */
         int i = 0;
-        int j = 1422;
+        int j = Integer.valueOf("1234567890");
 
         // The maximum value of an integer is
         System.out.println("Max int value " + Integer.MAX_VALUE);
