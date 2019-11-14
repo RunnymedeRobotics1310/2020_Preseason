@@ -72,7 +72,7 @@ public class IfElse {
             System.out.println("b is bigger");
         }
 
-        // By convention, the else if would only be used if the same
+        // NOTE: By convention, the else if would only be used if the same
         // variables are being tested for another condition.  Using
         // complex else if statements on different variables can
         // create confusion in debugging
@@ -126,7 +126,7 @@ public class IfElse {
         // Logical expressions can be evaluated OUTSIDE of If statements !!!!
         boolean result = a > 2 && (b < 7 || c > 3) && d < 6;
         System.out.println(result);
-        
+
 
     }
 }
