@@ -7,10 +7,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -24,13 +21,6 @@ public class Robot extends TimedRobot {
     // User Interface
     private final Joystick driverJoystick = new Joystick(0);
 
-    // Motors and Sensors
-    private final DifferentialDrive differentialDrive = 
-            new DifferentialDrive(new PWMVictorSPX(0), new PWMVictorSPX(1));
-    
-    // Other 
-    private final Timer timer = new Timer();
-
     /**
      * This function is run when the robot is first started up and should be used
      * for any initialization code.
@@ -43,9 +33,21 @@ public class Robot extends TimedRobot {
      * This function is run once each time the robot enters autonomous mode.
      */
     @Override
+    public void disabledInit() {
+    }
+
+    /**
+     * This function is called periodically during disabled mode.
+     */
+    @Override
+    public void disabledPeriodic() {
+    }
+
+    /**
+     * This function is run once each time the robot enters autonomous mode.
+     */
+    @Override
     public void autonomousInit() {
-        timer.reset();
-        timer.start();
     }
 
     /**
@@ -53,13 +55,6 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void autonomousPeriodic() {
-        // Drive for 2 seconds
-        if (timer.get() < 2.0) {
-            differentialDrive.arcadeDrive(0.5, 0.0); // drive forwards half speed
-        }
-        else {
-            differentialDrive.stopMotor(); // stop robot
-        }
     }
 
     /**
@@ -74,7 +69,13 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void teleopPeriodic() {
-        differentialDrive.arcadeDrive(driverJoystick.getY(), driverJoystick.getX());
+    }
+
+    /**
+     * This function is called once each time the robot enters test mode.
+     */
+    @Override
+    public void testInit() {
     }
 
     /**
