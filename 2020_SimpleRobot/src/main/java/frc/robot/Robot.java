@@ -6,6 +6,7 @@
 /*----------------------------------------------------------------------------*/
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -79,6 +80,8 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void teleopPeriodic() {
+
+        leftTalon.set(ControlMode.PercentOutput, .1);
     }
 
     /**
