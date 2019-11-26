@@ -82,16 +82,22 @@ public class Robot extends TimedRobot {
 	public void teleopPeriodic() {
 
 
-		if (driverJoystick.getRawAxis(1) < 0.05 && driverJoystick.getRawAxis(1) > 0.05) {
+		if (driverJoystick.getRawAxis(1) < 0.05 && driverJoystick.getRawAxis(1) > -0.05) {
 			leftTalon.set(ControlMode.PercentOutput, 0);
-			rightTalon.set(ControlMode.PercentOutput, 0);
 		}
 		else if (driverJoystick.getRawAxis(1) > 0.05 || driverJoystick.getRawAxis(1) < -0.05) {
 			leftTalon.set(ControlMode.PercentOutput, driverJoystick.getRawAxis(1));
 		}
+
+		if (driverJoystick.getRawAxis(5) < 0.05 && driverJoystick.getRawAxis(5) > -0.05) {
+			rightTalon.set(ControlMode.PercentOutput, 0);
+		}
 		else if (driverJoystick.getRawAxis(5) > 0.05 || driverJoystick.getRawAxis(5) < -0.05) {
 			rightTalon.set(ControlMode.PercentOutput, driverJoystick.getRawAxis(5));
 		}
+
+
+
 	}
 
 	/**
