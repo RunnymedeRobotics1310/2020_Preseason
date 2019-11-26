@@ -85,16 +85,26 @@ public class Robot extends TimedRobot {
 		if (driverJoystick.getRawAxis(1) < 0.05 && driverJoystick.getRawAxis(1) > -0.05) {
 			leftTalon.set(ControlMode.PercentOutput, 0);
 		}
+<<<<<<< HEAD
 		else {
+=======
+		else
+>>>>>>> c3daecc7f40abbae0f1958be6d0be28d0fcdfffc
 			leftTalon.set(ControlMode.PercentOutput, driverJoystick.getRawAxis(1));
-		}
+
 
 		if (driverJoystick.getRawAxis(5) < 0.05 && driverJoystick.getRawAxis(5) > -0.05) {
 			rightTalon.set(ControlMode.PercentOutput, 0);
 		}
+<<<<<<< HEAD
 		else {
 			rightTalon.set(ControlMode.PercentOutput, driverJoystick.getRawAxis(5)*-1);
 		}
+=======
+		else
+			rightTalon.set(ControlMode.PercentOutput, driverJoystick.getRawAxis(5));
+
+>>>>>>> c3daecc7f40abbae0f1958be6d0be28d0fcdfffc
 
 
 
