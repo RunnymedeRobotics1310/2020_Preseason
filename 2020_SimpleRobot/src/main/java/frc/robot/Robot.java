@@ -6,6 +6,8 @@
 /*----------------------------------------------------------------------------*/
 package frc.robot;
 
+import com.ctre.phoenix.motorcontrol.can.TalonSRX;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -21,6 +23,9 @@ public class Robot extends TimedRobot {
 
     // User Interface
     private final Joystick driverJoystick = new Joystick(0);
+
+    private final TalonSRX leftTalon = new TalonSRX(11);
+    private final TalonSRX rightTalon = new TalonSRX(13);
 
     /**
      * This function is run when the robot is first started up and should be used
