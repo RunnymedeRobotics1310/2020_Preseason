@@ -19,74 +19,74 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends TimedRobot {
 
-	// User Interface
-	private final Joystick driverJoystick = new Joystick(0);
+    // User Interface
+    private final Joystick driverJoystick = new Joystick(0);
 
-	/**
-	 * This function is run when the robot is first started up and should be used
-	 * for any initialization code.
-	 */
-	@Override
-	public void robotInit() {
-	}
+    /**
+     * This function is run when the robot is first started up and should be used
+     * for any initialization code.
+     */
+    @Override
+    public void robotInit() {
+    }
 
-	/**
-	 * This function is run once each time the robot enters autonomous mode.
-	 */
-	@Override
-	public void disabledInit() {
-	}
+    /**
+     * This function is run once each time the robot enters autonomous mode.
+     */
+    @Override
+    public void disabledInit() {
+    }
 
-	/**
-	 * This function is called periodically during disabled mode.
-	 */
-	@Override
-	public void disabledPeriodic() {
-		System.out.println(driverJoystick.getRawAxis(1));
-		System.out.println(driverJoystick.getRawAxis(5));
-		SmartDashboard.putNumber("leftDrive",driverJoystick.getRawAxis(1));
-		SmartDashboard.putNumber("rightDrive",driverJoystick.getRawAxis(5));
-	}
+    /**
+     * This function is called periodically during disabled mode.
+     */
+    @Override
+    public void disabledPeriodic() {
+        System.out.println(driverJoystick.getRawAxis(1));
+        System.out.println(driverJoystick.getRawAxis(5));
+        SmartDashboard.putNumber("leftDrive",Math.round(driverJoystick.getRawAxis(1)*100)/100.0);
+        SmartDashboard.putNumber("rightDrive",Math.round(driverJoystick.getRawAxis(5)*100)/100.0);
+    }
 
-	/**
-	 * This function is run once each time the robot enters autonomous mode.
-	 */
-	@Override
-	public void autonomousInit() {
-	}
+    /**
+     * This function is run once each time the robot enters autonomous mode.
+     */
+    @Override
+    public void autonomousInit() {
+    }
 
-	/**
-	 * This function is called periodically during autonomous.
-	 */
-	@Override
-	public void autonomousPeriodic() {
-	}
+    /**
+     * This function is called periodically during autonomous.
+     */
+    @Override
+    public void autonomousPeriodic() {
+    }
 
-	/**
-	 * This function is called once each time the robot enters teleoperated mode.
-	 */
-	@Override
-	public void teleopInit() {
-	}
+    /**
+     * This function is called once each time the robot enters teleoperated mode.
+     */
+    @Override
+    public void teleopInit() {
+    }
 
-	/**
-	 * This function is called periodically during teleoperated mode.
-	 */
-	@Override
-	public void teleopPeriodic() {
-	}
+    /**
+     * This function is called periodically during teleoperated mode.
+     */
+    @Override
+    public void teleopPeriodic() {
+    }
 
-	/**
-	 * This function is called once each time the robot enters test mode.
-	 */
-	@Override
-	public void testInit() {
-	}
+    /**
+     * This function is called once each time the robot enters test mode.
+     */
+    @Override
+    public void testInit() {
+    }
 
-	/**
-	 * This function is called periodically during test mode.
-	 */
-	@Override
-	public void testPeriodic() {
-	}
+    /**
+     * This function is called periodically during test mode.
+     */
+    @Override
+    public void testPeriodic() {
+    }
 }
