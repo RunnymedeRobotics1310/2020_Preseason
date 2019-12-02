@@ -33,7 +33,7 @@ public class GameController {
             return 0;
         }
 
-        return stickValue;
+        return Math.round(stickValue * 100) / 100.0d;
     }
 
 
