@@ -12,6 +12,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.oi.GameController;
+import frc.robot.oi.TankDrive;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -27,6 +28,8 @@ public class Robot extends TimedRobot {
 
     private final TalonSRX leftTalon = new TalonSRX(RobotMap.LEFT_DRIVE_CAN_ADDRESS);
     private final TalonSRX rightTalon = new TalonSRX(13);
+
+    private TankDrive tankDrive = new TankDrive();
 
     /**
      * This function is run when the robot is first started up and should be used
@@ -81,23 +84,13 @@ public class Robot extends TimedRobot {
     @Override
     public void teleopPeriodic() {
 
+        double leftYAxis  = driverController.getAxis(GameController.LEFT_STICK,  GameController.Y_AXIS);
+        double rightYAxis = driverController.getAxis(GameController.RIGHT_STICK, GameController.Y_AXIS);
 
-        if (driverController.getRawAxis(1) < 0.05 && driverController.getRawAxis(1) > -0.05) {
-            leftTalon.set(ControlMode.PercentOutput, 0);
-        }
-        else  {
-            leftTalon.set(ControlMode.PercentOutput, driverController.getRawAxis(1));
-        }
+        MotorSpeeds motorSpeeds = tankDrive.calcMotorSpeed(leftYAxis, rightYAxis);
 
-        if (driverController.getRawAxis(5) < 0.05 && driverController.getRawAxis(5) > -0.05) {
-            rightTalon.set(ControlMode.PercentOutput, 0);
-        }
-        else {
-            rightTalon.set(ControlMode.PercentOutput, driverController.getRawAxis(5)*-1);
-        }
-
-
-
+        leftTalon .set(ControlMode.PercentOutput, motorSpeeds.left);
+        rightTalon.set(ControlMode.PercentOutput, motorSpeeds.right);
     }
 
     /**
