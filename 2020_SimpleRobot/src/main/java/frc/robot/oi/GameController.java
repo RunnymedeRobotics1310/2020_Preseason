@@ -17,6 +17,8 @@ public class GameController {
 	public static final int LEFT_STICK      = 20;
 	public static final int RIGHT_STICK     = 21;
 
+
+
 	private Joystick joystick;
 
 	public GameController (int driverStationPort) {
@@ -32,7 +34,16 @@ public class GameController {
 			if (axis == Y_AXIS) {
 				stickValue = joystick.getRawAxis(1);
 			}
+
+			if (axis == Y_AXIS) {
+				stickValue = joystick.getRawAxis(1);
+			}
+			if (axis == X_AXIS)
+			{
+				stickValue = joystick.getRawAxis(2);
+			}
 		}
+
 
 		if (Math.abs(stickValue) < 0.05) {
 			return 0;
