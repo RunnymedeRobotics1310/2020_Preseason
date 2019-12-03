@@ -122,7 +122,8 @@ public class Robot extends TimedRobot {
 	}
 
 	private void updateSmartDashboard() {
-		SmartDashboard.putNumber("leftDrive",Math.round(driverController.getAxis(GameController.LEFT_STICK, GameController.Y_AXIS)*100)/100.0);
-		SmartDashboard.putNumber("rightDrive",Math.round(driverController.getAxis(GameController.RIGHT_STICK, GameController.Y_AXIS)*100)/100.0);
+		SmartDashboard.putNumber("Left Y Axis",Math.round(driverController.getAxis(GameController.LEFT_STICK, GameController.Y_AXIS)*100)/100.0);
+		SmartDashboard.putNumber("Right Y Axis",Math.round(driverController.getAxis(GameController.RIGHT_STICK, GameController.Y_AXIS)*100)/100.0);
+		SmartDashboard.putNumber("Right X Axis",Math.round(driverController.getAxis(GameController.RIGHT_STICK, GameController.X_AXIS)*100)/100.0);
 	}
 }
