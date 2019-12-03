@@ -38,7 +38,7 @@ public class GameController {
 		if (stick == LEFT_STICK) {
 
 			if (axis == Y_AXIS) {
-				stickValue = joystick.getRawAxis(1);
+				stickValue = -joystick.getRawAxis(1);
 			}
 
 			if (axis == X_AXIS) {
@@ -49,11 +49,11 @@ public class GameController {
 		if (stick == RIGHT_STICK) {
 
 			if (axis == Y_AXIS) {
-				stickValue = joystick.getRawAxis(5)*1;
+				stickValue = -joystick.getRawAxis(5);
 			}
 
 			if (axis == X_AXIS) {
-				stickValue = joystick.getRawAxis(4)*-1;
+				stickValue = joystick.getRawAxis(4);
 			}
 		}
 
