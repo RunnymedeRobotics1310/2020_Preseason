@@ -16,9 +16,15 @@ public class ArcadeDrive {
         	motorSpeeds.left = rightXAxis;
         	motorSpeeds.right = rightXAxis *-1;
         }
-        else {
+        
+        else if (Math.abs(rightXAxis)>0 && Math.abs(leftYAxis)>0){
         	motorSpeeds.left = leftYAxis;
-        	motorSpeeds.right = leftYAxis * rightXAxis;
+        	motorSpeeds.right = leftYAxis - rightXAxis;
+        }
+        else {
+        	motorSpeeds.left = 0;
+        	motorSpeeds.right = 0;
+        	 
         }
 
         // TODO: Calculate the correct motor speeds
