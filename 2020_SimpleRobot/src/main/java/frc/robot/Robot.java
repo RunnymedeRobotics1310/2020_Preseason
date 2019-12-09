@@ -11,6 +11,8 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.oi.ArcadeDrive;
+import frc.robot.oi.DriveSelector;
 import frc.robot.oi.GameController;
 import frc.robot.oi.TankDrive;
 
@@ -30,11 +32,9 @@ public class Robot extends TimedRobot {
     private final TalonSRX rightTalon = new TalonSRX(13);
 
     private TankDrive tankDrive = new TankDrive();
-
     private ArcadeDrive arcadeDrive = new ArcadeDrive();
 
     private DriveSelector driveSelector = new DriveSelector();
-
 
     /**
      * This function is run when the robot is first started up and should be used
@@ -56,13 +56,7 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void disabledPeriodic() {
-
-       
-        SmartDashboard.putNumber("leftDrive",Math.round(driverController.getRawAxis(1)*100)/100.0);
-        SmartDashboard.putNumber("rightDrive",Math.round(driverController.getRawAxis(5)*100)/100.0);
-
         updateSmartDashboard();
-
     }
 
     /**
@@ -77,10 +71,7 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void autonomousPeriodic() {
-
-
         updateSmartDashboard();
-
     }
 
     /**
@@ -98,13 +89,6 @@ public class Robot extends TimedRobot {
 
         double leftYAxis  = driverController.getAxis(GameController.LEFT_STICK,  GameController.Y_AXIS);
         double rightYAxis = driverController.getAxis(GameController.RIGHT_STICK, GameController.Y_AXIS);
-
-
-        MotorSpeeds motorSpeeds = tankDrive.calcMotorSpeed(leftYAxis, rightYAxis);
-
-        leftTalon .set(ControlMode.PercentOutput, motorSpeeds.left);
-        rightTalon.set(ControlMode.PercentOutput, motorSpeeds.right);
-
         double rightXAxis = driverController.getAxis(GameController.RIGHT_STICK, GameController.X_AXIS);
 
         MotorSpeeds motorSpeeds = null;
@@ -120,7 +104,6 @@ public class Robot extends TimedRobot {
         rightTalon.set(ControlMode.PercentOutput, motorSpeeds.right);
 
         updateSmartDashboard();
-
     }
 
     /**
@@ -135,7 +118,6 @@ public class Robot extends TimedRobot {
      */
     @Override
     public void testPeriodic() {
-
         updateSmartDashboard();
     }
 
@@ -144,6 +126,5 @@ public class Robot extends TimedRobot {
         SmartDashboard.putNumber("Left Y Axis",Math.round(driverController.getAxis(GameController.LEFT_STICK, GameController.Y_AXIS)*100)/100.0);
         SmartDashboard.putNumber("Right Y Axis",Math.round(driverController.getAxis(GameController.RIGHT_STICK, GameController.Y_AXIS)*100)/100.0);
         SmartDashboard.putNumber("Right X Axis",Math.round(driverController.getAxis(GameController.RIGHT_STICK, GameController.X_AXIS)*100)/100.0);
-
     }
 }
