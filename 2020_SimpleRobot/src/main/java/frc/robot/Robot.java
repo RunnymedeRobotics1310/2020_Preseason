@@ -97,6 +97,10 @@ public class Robot extends TimedRobot {
 
 		MotorSpeeds motorSpeeds = null;
 
+		if (forwardLimit.get()) {
+			motorSpeeds.left = 0;
+			motorSpeeds.right = 0;
+		}
 		if (driveSelector.getDrive().equals(DriveSelector.TANK_DRIVE)) {
 			motorSpeeds = tankDrive.calcMotorSpeed(leftYAxis, rightYAxis);
 		}
