@@ -95,13 +95,13 @@ public class Robot extends TimedRobot {
 		double rightYAxis = driverController.getAxis(GameController.RIGHT_STICK, GameController.Y_AXIS);
 		double rightXAxis = driverController.getAxis(GameController.RIGHT_STICK, GameController.X_AXIS);
 
-		MotorSpeeds motorSpeeds = null;
+		MotorSpeeds motorSpeeds = new MotorSpeeds();
 
-		if (forwardLimit.get()) {
+		if (!forwardLimit.get()) {
 			motorSpeeds.left = 0;
 			motorSpeeds.right = 0;
-		}
-		if (driveSelector.getDrive().equals(DriveSelector.TANK_DRIVE)) {
+        }
+		else if (driveSelector.getDrive().equals(DriveSelector.TANK_DRIVE)) {
 			motorSpeeds = tankDrive.calcMotorSpeed(leftYAxis, rightYAxis);
 		}
 		else {
@@ -135,6 +135,6 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putNumber("Left Y Axis",Math.round(driverController.getAxis(GameController.LEFT_STICK, GameController.Y_AXIS)*100)/100.0);
 		SmartDashboard.putNumber("Right Y Axis",Math.round(driverController.getAxis(GameController.RIGHT_STICK, GameController.Y_AXIS)*100)/100.0);
 		SmartDashboard.putNumber("Right X Axis",Math.round(driverController.getAxis(GameController.RIGHT_STICK, GameController.X_AXIS)*100)/100.0);
-		SmartDashboard.putBoolean("Forward Limit", forwardLimit.get());
+		SmartDashboard.putBoolean("Forward Limit", !forwardLimit.get());
 	}
 }
