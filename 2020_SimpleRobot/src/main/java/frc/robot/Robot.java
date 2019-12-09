@@ -98,9 +98,12 @@ public class Robot extends TimedRobot {
 		MotorSpeeds motorSpeeds = new MotorSpeeds();
 
 		if (!forwardLimit.get()) {
+			if ((driverController.getAxis(GameController.LEFT_STICK,  GameController.Y_AXIS)< 0)){
+				motorSpeeds = arcadeDrive.calcMotorSpeed(leftYAxis, rightXAxis);
+			}
 			motorSpeeds.left = 0;
 			motorSpeeds.right = 0;
-        }
+		}
 		else if (driveSelector.getDrive().equals(DriveSelector.TANK_DRIVE)) {
 			motorSpeeds = tankDrive.calcMotorSpeed(leftYAxis, rightYAxis);
 		}
