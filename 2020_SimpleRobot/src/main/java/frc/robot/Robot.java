@@ -46,7 +46,9 @@ public class Robot extends TimedRobot {
     @Override
     public void robotInit() {
         leftTalon .configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0,  0);
+        leftTalon .setSelectedSensorPosition(0);
         rightTalon.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0,  0);
+        rightTalon.setSelectedSensorPosition(0);
     }
 
     /**
