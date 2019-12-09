@@ -27,27 +27,28 @@ public class ArcadeDrive {
         	return motorSpeeds;
         }
         // move forward and turn to the right
-        if (rightXAxis > 0 && leftYAxis >0){
+        if (leftYAxis >0 && rightXAxis > 0){
         	motorSpeeds.left = leftYAxis;
         	motorSpeeds.right = leftYAxis - rightXAxis;
         	return motorSpeeds;
         }
-        // move backward and to the left
-        if (rightXAxis >0 && leftYAxis < 0) {
-        	motorSpeeds.left = leftYAxis * -1;
-        	motorSpeeds.right = leftYAxis * -1 - rightXAxis;
+        
+        // move forward and to the left
+        if (leftYAxis > 0 && rightXAxis <0) {
+        	motorSpeeds.left = leftYAxis + rightXAxis;
+        	motorSpeeds.right = leftYAxis;
         	return motorSpeeds;
         }
-        // move forward and to the left
-        if (rightXAxis <0 && leftYAxis > 0) {
+        // move backward and to the left
+        if (leftYAxis < 0 && rightXAxis >0) {
         	motorSpeeds.left = leftYAxis;
-        	motorSpeeds.right = leftYAxis + rightXAxis;
+        	motorSpeeds.right = leftYAxis - rightXAxis;
         	return motorSpeeds;
         }
         //move backward and to the right
-        if (rightXAxis <0 && leftYAxis <0) {
-        	motorSpeeds.left = leftYAxis *-1;
-        	motorSpeeds.right = leftYAxis * -1 + rightXAxis;
+        if (leftYAxis <0 && rightXAxis <0) {
+        	motorSpeeds.left = leftYAxis + rightXAxis;
+        	motorSpeeds.right = leftYAxis;
         	return motorSpeeds;
         }
         
