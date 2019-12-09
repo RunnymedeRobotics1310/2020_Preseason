@@ -26,7 +26,6 @@ import frc.robot.oi.TankDrive;
  */
 public class Robot extends TimedRobot {
 
-        }
 	// User Interface
 	private final GameController driverController = new GameController(RobotMap.DRIVER_CONTROLLER);
 
