@@ -29,35 +29,46 @@ public class ArcadeDrive2 {
             return motorSpeeds;
         }
 
-        // move forward and turn to the right
-        if (speed > 0 && turn > 0) {
-            motorSpeeds.left  = speed;
-            motorSpeeds.right = speed - turn;
-            return motorSpeeds;
+        // Forward
+        if (speed > 0) {
+
+            // move forward and turn to the right
+            if (turn > 0) {
+
+                motorSpeeds.left  = speed;
+                motorSpeeds.right = speed - turn;
+
+            }
+            else {
+
+                // move forward and to the left
+                motorSpeeds.left  = speed + turn;
+                motorSpeeds.right = speed;
+
+            }
+
+        }
+        else { // Backward
+
+            if (turn > 0) {
+
+                // move backward and to the left
+                motorSpeeds.left  = speed;
+                // FIXME: Subtracting a positive (turn is positive) from a negative (speed is negative)
+                // makes the number more negative and could go past -1.0 which is not possible
+                // Think about slowing the left wheel instead of speeding up the right.
+                motorSpeeds.right = speed - turn;
+
+            }
+            else { // turn < 0
+
+                // move backward and to the right
+                // FIXME: Same comment as above
+                motorSpeeds.left  = speed + turn;
+                motorSpeeds.right = speed;
+            }
         }
 
-        // move forward and to the left
-        if (speed > 0 && turn < 0) {
-            motorSpeeds.left  = speed + turn;
-            motorSpeeds.right = speed;
-            return motorSpeeds;
-        }
-
-        // move backward and to the left
-        if (speed < 0 && turn > 0) {
-            motorSpeeds.left  = speed;
-            motorSpeeds.right = speed - turn;
-            return motorSpeeds;
-        }
-
-        //move backward and to the right
-        if (speed < 0 && turn < 0) {
-            motorSpeeds.left  = speed + turn;
-            motorSpeeds.right = speed;
-            return motorSpeeds;
-        }
-
-        // Note: this case does not exist
         return motorSpeeds;
     }
 }
