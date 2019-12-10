@@ -10,18 +10,31 @@
         "hgap": 16.0,
         "vgap": 16.0,
         "tiles": {
-          "1,2": {
+          "3,0": {
+            "size": [
+              3,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Driver Controller",
+              "_title": "Driver Controller"
+            }
+          },
+          "8,0": {
             "size": [
               1,
               1
             ],
             "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Right Y Axis",
-              "_title": "Right Y Axis"
+              "_type": "Boolean Box",
+              "_source0": "network_table:///SmartDashboard/Forward Limit",
+              "_title": "Forward Limit",
+              "Colors/Color when true": "#7CFC00FF",
+              "Colors/Color when false": "#8B0000FF"
             }
           },
-          "0,0": {
+          "3,1": {
             "size": [
               2,
               1
@@ -32,48 +45,48 @@
               "_title": "Drive Selector"
             }
           },
-          "2,0": {
-            "size": [
-              2,
-              1
-            ],
-            "content": {
-              "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Auto Selector",
-              "_title": "Auto Selector"
-            }
-          },
-          "4,0": {
+          "6,1": {
             "size": [
               1,
               1
             ],
             "content": {
               "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Driver Controller",
-              "_title": "Driver Controller"
+              "_source0": "network_table:///SmartDashboard/Left Dist",
+              "_title": "Left Dist"
             }
           },
-          "1,1": {
+          "7,1": {
             "size": [
               1,
               1
             ],
             "content": {
               "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Left Y Axis",
-              "_title": "Left Y Axis"
+              "_source0": "network_table:///SmartDashboard/Right Dist",
+              "_title": "Right Dist"
             }
           },
-          "0,2": {
+          "6,0": {
             "size": [
               1,
               1
             ],
             "content": {
               "_type": "Text View",
-              "_source0": "network_table:///SmartDashboard/Right X Axis",
-              "_title": "Right X Axis"
+              "_source0": "network_table:///SmartDashboard/Left Motor",
+              "_title": "Left Motor"
+            }
+          },
+          "7,0": {
+            "size": [
+              1,
+              1
+            ],
+            "content": {
+              "_type": "Text View",
+              "_source0": "network_table:///SmartDashboard/Right Motor",
+              "_title": "Right Motor"
             }
           }
         }
@@ -88,7 +101,29 @@
         "showGrid": true,
         "hgap": 16.0,
         "vgap": 16.0,
-        "tiles": {}
+        "tiles": {
+          "0,0": {
+            "size": [
+              2,
+              4
+            ],
+            "content": {
+              "_type": "Subsystem Layout",
+              "_source0": "network_table:///LiveWindow/Ungrouped",
+              "_title": "Ungrouped",
+              "Layout/Label position": "BOTTOM",
+              "_children": [
+                {
+                  "_type": "Boolean Box",
+                  "_source0": "network_table:///LiveWindow/Ungrouped/DigitalInput[1]/Value",
+                  "_title": "DigitalInput[1]/Value",
+                  "Colors/Color when true": "#7CFC00FF",
+                  "Colors/Color when false": "#8B0000FF"
+                }
+              ]
+            }
+          }
+        }
       }
     }
   ],

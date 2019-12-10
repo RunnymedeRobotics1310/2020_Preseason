@@ -136,21 +136,20 @@ public class Robot extends TimedRobot {
         updateSmartDashboard();
     }
 
-    private long getLeftEncoder() {
+    private int getLeftEncoder() {
         return -leftTalon.getSelectedSensorPosition(0);
     }
 
-    private long getRightEncoder() {
+    private int getRightEncoder() {
         return rightTalon.getSelectedSensorPosition(0);
     }
 
     private void updateSmartDashboard() {
         SmartDashboard.putString("Driver Controller", driverController.toString());
-        SmartDashboard.putNumber("Left Y Axis",Math.round(driverController.getAxis(GameController.LEFT_STICK, GameController.Y_AXIS)*100)/100.0);
-        SmartDashboard.putNumber("Right Y Axis",Math.round(driverController.getAxis(GameController.RIGHT_STICK, GameController.Y_AXIS)*100)/100.0);
-        SmartDashboard.putNumber("Right X Axis",Math.round(driverController.getAxis(GameController.RIGHT_STICK, GameController.X_AXIS)*100)/100.0);
         SmartDashboard.putBoolean("Forward Limit", !forwardLimit.get());
         SmartDashboard.putNumber("Left Dist", getLeftEncoder());
         SmartDashboard.putNumber("Right Dist", getRightEncoder());
+        SmartDashboard.putNumber("Left Motor", leftTalon.getMotorOutputPercent());
+        SmartDashboard.putNumber("Right Motor", rightTalon.getMotorOutputPercent());
     }
 }
