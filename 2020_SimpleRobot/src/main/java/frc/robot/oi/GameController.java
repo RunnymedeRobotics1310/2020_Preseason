@@ -15,7 +15,9 @@ public class GameController {
 
     public static final int LEFT_STICK_BUTTON = 9;
     public static final int RIGHT_STICK_BUTTON = 10;
-
+    
+    public static final int LEFT_TRIGGER 	= 2;
+    public static final int RIGHT_TRIGGER 	= 3;     
 
     public static final int X_AXIS          = 15;
     public static final int Y_AXIS          = 16;
@@ -91,7 +93,7 @@ public class GameController {
         if (button == RIGHT_BUMPER) {
             buttonValue = joystick.getRawButtonPressed(6);
         }
-
+        
         if (button == VIEW_BUTTON) {
             buttonValue = joystick.getRawButtonPressed(7);
         }
@@ -110,6 +112,24 @@ public class GameController {
 
         return buttonValue;
     }
+    
+    // Trigger buttons
+    public double getTrigger(double trigger) {
+    	
+      double triggerValue = 0;
+      
+      if (trigger == LEFT_TRIGGER) {
+      		triggerValue = joystick.getRawAxis(2); // don't know the number
+      }	
+      
+      if (trigger == RIGHT_TRIGGER) {
+     		triggerValue = joystick.getRawAxis(3); // don't know that number
+      }
+      
+      return triggerValue;
+   	
+    }
+    
 
 
     @Override
@@ -119,8 +139,47 @@ public class GameController {
 
         double leftX = getAxis(LEFT_STICK, X_AXIS);
         double leftY = getAxis(LEFT_STICK, Y_AXIS);
+        double rightX = getAxis(RIGHT_STICK, X_AXIS);
+        double rightY = getAxis(RIGHT_STICK, Y_AXIS);
 
-        out += "(" + leftX + ", " + leftY + ")";
+        out += "(" + leftX + ", " + leftY + ") (" + rightX + "," + rightY + ")";
+        if (getButton(A_BUTTON)) {
+        	out += " A";
+        }
+        if (getButton(B_BUTTON)) {
+        	out += " B";
+        }
+        if (getButton(X_BUTTON)) {
+        	out += " X";
+        }
+        if (getButton(Y_BUTTON)) {
+        	out += " Y";
+        }
+        if (getButton(LEFT_BUMPER)) {
+        	out += " Left Bumper";
+        }
+        if (getButton(RIGHT_BUMPER)) {
+        	out += " Right Bumper";
+        }
+        if (getButton(VIEW_BUTTON)) {
+        	out += " View Button";
+        }
+        if (getButton(MENU_BUTTON)) {
+        	out += " Menu Button";
+        }
+        if (getButton(LEFT_STICK_BUTTON)) {
+        	out += " Left Stick Button";
+        }
+        if (getButton(RIGHT_STICK_BUTTON)) {
+        	out += " Right Stick Button";
+        }
+        if (getButton(LEFT_TRIGGER)) {	
+			out += " Left Trigger";
+        }
+        if (getButton(RIGHT_TRIGGER)){
+        	out += " Right Trigger";
+        }
+        
 
         return out;
     }
