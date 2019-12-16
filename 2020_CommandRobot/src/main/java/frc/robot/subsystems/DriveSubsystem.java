@@ -7,6 +7,7 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -36,6 +37,11 @@ public class DriveSubsystem extends Subsystem {
                 motorSpeeds.right = 0;
             }
         }
+
+        leftTalon .set(ControlMode.PercentOutput, -motorSpeeds.left);
+        rightTalon.set(ControlMode.PercentOutput, motorSpeeds.right);
+
+
 
     }
 }
