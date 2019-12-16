@@ -13,7 +13,6 @@ public class GameController {
 	public static final int VIEW_BUTTON     = 7;
 	public static final int MENU_BUTTON     = 8;
 
-
     public static final int LEFT_STICK_BUTTON = 9;
     public static final int RIGHT_STICK_BUTTON = 10;
 
@@ -131,11 +130,11 @@ public class GameController {
       double triggerValue = 0;
       
       if (trigger == LEFT_TRIGGER) {
-      		triggerValue = joystick.getRawAxis(2); // don't know the number
+      		triggerValue = joystick.getRawAxis(2); 
       }	
       
       if (trigger == RIGHT_TRIGGER) {
-     		triggerValue = joystick.getRawAxis(3); // don't know that number
+     		triggerValue = joystick.getRawAxis(3); 
       }
       
       return triggerValue;
@@ -143,8 +142,6 @@ public class GameController {
     }
     
 	
-	
-
 
 
 	@Override
@@ -156,8 +153,14 @@ public class GameController {
         double leftY = getAxis(LEFT_STICK, Y_AXIS);
         double rightX = getAxis(RIGHT_STICK, X_AXIS);
         double rightY = getAxis(RIGHT_STICK, Y_AXIS);
+        double rightTrigger = getTrigger(LEFT_TRIGGER);
+        double leftTrigger = getTrigger(RIGHT_TRIGGER);
+        
 
         out += "(" + leftX + ", " + leftY + ") (" + rightX + "," + rightY + ")";
+        out += "Left Trigger (" + leftTrigger + ") Right Trigger (" + rightTrigger + ")";
+        
+        
         if (getButton(A_BUTTON)) {
         	out += " A";
         }
@@ -188,14 +191,9 @@ public class GameController {
         if (getButton(RIGHT_STICK_BUTTON)) {
         	out += " Right Stick Button";
         }
-        /*if (getTrigger(LEFT_TRIGGER)) {	
-			out += " Left Trigger";
-        }
-        if (getTrigger(RIGHT_TRIGGER)){
-        	out += " Right Trigger";
-        }
         
-        */
+        
+        
 		
 
 		return out;
