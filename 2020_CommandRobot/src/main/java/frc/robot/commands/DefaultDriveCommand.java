@@ -10,8 +10,8 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.MotorSpeeds;
 import frc.robot.Robot;
+import frc.robot.oi.ArcadeDrive;
 import frc.robot.oi.DriveSelector;
-import frc.robot.oi.GameController;
 import frc.robot.oi.TankDrive;
 
 /**
@@ -19,52 +19,54 @@ import frc.robot.oi.TankDrive;
  */
 public class DefaultDriveCommand extends Command {
 
-    private TankDrive tankDrive = new TankDrive();
+	private TankDrive tankDrive = new TankDrive();
+	private ArcadeDrive arcadeDrive = new ArcadeDrive();
 
-    public DefaultDriveCommand() {
-        // Use requires() here to declare subsystem dependencies
-        requires(Robot.driveSubsystem);
-    }
 
-    // Called just before this Command runs the first time
-    @Override
-    protected void initialize() {
-    }
+	public DefaultDriveCommand() {
+		// Use requires() here to declare subsystem dependencies
+		requires(Robot.driveSubsystem);
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    @Override
-    protected void execute() {
+	// Called just before this Command runs the first time
+	@Override
+	protected void initialize() {
+	}
 
-        double leftYAxis  = Robot.oi.getDriveLeftYAxis();
-        double rightYAxis = driverController.getAxis(GameController.RIGHT_STICK, GameController.Y_AXIS);
-        double rightXAxis = driverController.getAxis(GameController.RIGHT_STICK, GameController.X_AXIS);
+	// Called repeatedly when this Command is scheduled to run
+	@Override
+	protected void execute() {
 
-        MotorSpeeds motorSpeeds = new MotorSpeeds();
+		double leftYAxis  = Robot.oi.getDriveLeftYAxis();
+		double rightYAxis = Robot.oi.getDriveRightYAxis();
+		double rightXAxis = Robot.oi.getDriveRightXAxis();
 
-        if (Robot.oi.getSelectedDrive().equals(DriveSelector.TANK_DRIVE)) {
-            motorSpeeds = tankDrive.calcMotorSpeed(leftYAxis, rightYAxis);
-        }
-        else {
-            motorSpeeds = arcadeDrive.calcMotorSpeed(leftYAxis, rightXAxis);
-        }
+		MotorSpeeds motorSpeeds = new MotorSpeeds();
 
-        Robot.driveSubsystem.setSpeed(leftSpeed, rightSpeed);
-    }
+		if (Robot.oi.getSelectedDrive().equals(DriveSelector.TANK_DRIVE)) {
+			motorSpeeds = tankDrive.calcMotorSpeed(leftYAxis, rightYAxis);
+		}
+		else {
+			motorSpeeds = arcadeDrive.calcMotorSpeed(leftYAxis, rightXAxis);
+		}
 
-    // Make this return true when this Command no longer needs to run execute()
-    @Override
-    protected boolean isFinished() {
-        return false;
-    }
+		Robot.driveSubsystem.setSpeed(leftYAxis, rightXAxis);
+	}
 
-    // Called once after isFinished returns true
-    @Override
-    protected void end() {
-    }
+	// Make this return true when this Command no longer needs to run execute()
+	@Override
+	protected boolean isFinished() {
+		return false;
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    @Override
-    protected void interrupted() {
-    }
+	// Called once after isFinished returns true
+	@Override
+	protected void end() {
+	}
+
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	@Override
+	protected void interrupted() {
+	}
 }
