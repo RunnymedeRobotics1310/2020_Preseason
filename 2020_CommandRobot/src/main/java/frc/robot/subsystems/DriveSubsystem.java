@@ -12,19 +12,30 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
+import frc.robot.commands.DefaultDriveCommand;
 
 /**
  * An example subsystem.  You can replace me with your own Subsystem.
  */
 public class DriveSubsystem extends Subsystem {
 
-	private final TalonSRX leftTalon = new TalonSRX(RobotMap.LEFT_DRIVE_CAN_ADDRESS);
-	private final TalonSRX rightTalon = new TalonSRX(13);
-	private DigitalInput forwardLimit = new DigitalInput(RobotMap.FORWARD_LIMIT_DIO_PORT);
+    private final TalonSRX leftTalon = new TalonSRX(RobotMap.LEFT_DRIVE_CAN_ADDRESS);
+    private final TalonSRX rightTalon = new TalonSRX(13);
+    private DigitalInput forwardLimit = new DigitalInput(RobotMap.FORWARD_LIMIT_DIO_PORT);
 
-	@Override
-	public void initDefaultCommand() {
-		// Set the default command for a subsystem here.
-		// setDefaultCommand(new MySpecialCommand());
-	}
+    @Override
+    public void initDefaultCommand() {
+        setDefaultCommand(new DefaultDriveCommand());
+    }
+
+    public void setSpeed(double leftSpeed, double rightSpeed) {
+
+        if (!forwardLimit.get()) {
+            if (motorSpeeds.left >= 0 || motorSpeeds.right >= 0){
+                motorSpeeds.left = 0;
+                motorSpeeds.right = 0;
+            }
+        }
+
+    }
 }

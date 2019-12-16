@@ -7,17 +7,31 @@
 
 package frc.robot;
 
-import frc.robot.oi.ArcadeDrive;
 import frc.robot.oi.GameController;
-import frc.robot.oi.TankDrive;
 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	private final GameController driverController = new GameController(RobotMap.DRIVER_CONTROLLER);
 
-	private TankDrive tankDrive = new TankDrive();
-	private ArcadeDrive arcadeDrive = new ArcadeDrive();
+    private final GameController driverController = new GameController(RobotMap.DRIVER_CONTROLLER);
+
+    public double getDriveLeftYAxis() {
+
+    }
+
+    public double getDriveRightYAxis() {
+
+    }
+
+    public double getDriveRightXAxis() {
+
+    }
+
+    public String getSelectedDrive() {
+
+    }
+
+
 }
