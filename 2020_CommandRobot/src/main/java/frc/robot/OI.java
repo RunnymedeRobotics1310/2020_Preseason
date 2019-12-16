@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import frc.robot.oi.DriveSelector;
 import frc.robot.oi.GameController;
 
 /**
@@ -15,23 +16,39 @@ import frc.robot.oi.GameController;
  */
 public class OI {
 
-    private final GameController driverController = new GameController(RobotMap.DRIVER_CONTROLLER);
+	private final GameController driverController = new GameController(RobotMap.DRIVER_CONTROLLER);
 
-    public double getDriveLeftYAxis() {
+	public double getDriveLeftYAxis() {
+		return driverController.getAxis(GameController.LEFT_STICK,  GameController.Y_AXIS);
+	}
 
-    }
+	public double getDriveRightYAxis() {
+		return driverController.getAxis(GameController.RIGHT_STICK, GameController.Y_AXIS);
+	}
 
-    public double getDriveRightYAxis() {
+	public double getDriveRightXAxis() {
+		return driverController.getAxis(GameController.RIGHT_STICK, GameController.X_AXIS);
+	}
 
-    }
+	public String getSelectedDrive() {
+		MotorSpeeds motorSpeeds = new MotorSpeeds();
 
-    public double getDriveRightXAxis() {
 
-    }
+		if (driveSelector.getDrive().equals(DriveSelector.TANK_DRIVE)) {
+			motorSpeeds = tankDrive.calcMotorSpeed(leftYAxis, rightYAxis);
+		}
+		else {
+			motorSpeeds = arcadeDrive.calcMotorSpeed(leftYAxis, rightXAxis);
+		}
+		if (!forwardLimit.get()) {
+			if (motorSpeeds.left >= 0 || motorSpeeds.right >= 0){
+				motorSpeeds.left = 0;
+				motorSpeeds.right = 0;
+			}
+		}
 
-    public String getSelectedDrive() {
 
-    }
+	}
 
 
 }
