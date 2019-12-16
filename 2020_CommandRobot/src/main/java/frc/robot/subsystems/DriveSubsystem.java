@@ -7,6 +7,7 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -19,23 +20,28 @@ import frc.robot.commands.DefaultDriveCommand;
  */
 public class DriveSubsystem extends Subsystem {
 
-    private final TalonSRX leftTalon = new TalonSRX(RobotMap.LEFT_DRIVE_CAN_ADDRESS);
-    private final TalonSRX rightTalon = new TalonSRX(13);
-    private DigitalInput forwardLimit = new DigitalInput(RobotMap.FORWARD_LIMIT_DIO_PORT);
+	private final TalonSRX leftTalon = new TalonSRX(RobotMap.LEFT_DRIVE_CAN_ADDRESS);
+	private final TalonSRX rightTalon = new TalonSRX(13);
+	private final DigitalInput forwardLimit = new DigitalInput(RobotMap.FORWARD_LIMIT_DIO_PORT);
 
-    @Override
-    public void initDefaultCommand() {
-        setDefaultCommand(new DefaultDriveCommand());
-    }
+	@Override
+	public void initDefaultCommand() {
+		setDefaultCommand(new DefaultDriveCommand());
+	}
 
-    public void setSpeed(double leftSpeed, double rightSpeed) {
+	public void setSpeed(double leftSpeed, double rightSpeed) {
 
-        if (!forwardLimit.get()) {
-            if (motorSpeeds.left >= 0 || motorSpeeds.right >= 0){
-                motorSpeeds.left = 0;
-                motorSpeeds.right = 0;
-            }
-        }
+		if (!forwardLimit.get()) {
+			if (leftSpeed >= 0 || rightSpeed >= 0){
+				leftSpeed = 0;
+				rightSpeed = 0;
+			}
+		}
 
-    }
+		leftTalon.set(ControlMode.PercentOutput, -leftSpeed);
+		rightTalon.set(ControlMode.PercentOutput, rightSpeed);
+
+	}
+
+
 }
