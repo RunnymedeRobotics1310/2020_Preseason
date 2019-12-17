@@ -15,9 +15,9 @@ public class AutoSelector {
     static {
         // Auto Options
         autoSelector = new SendableChooser<String>();
-        autoSelector.setDefaultOption(NONE, NONE);
         autoSelector.addOption(FORWARD_1, FORWARD_1);
         autoSelector.addOption(FORWARD_2, FORWARD_2);
+        autoSelector.setDefaultOption(NONE, NONE);
 
         SmartDashboard.putData("Auto Selector", autoSelector);
     }
