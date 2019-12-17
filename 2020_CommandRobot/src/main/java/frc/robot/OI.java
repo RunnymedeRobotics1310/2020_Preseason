@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.oi.DriveSelector;
 import frc.robot.oi.GameController;
 
@@ -40,7 +41,9 @@ public class OI {
     }
 
     public void periodic() {
-
+    	SmartDashboard.putString("Driver Controller", driverController.toString());
+    	SmartDashboard.putNumber("Left Stick", GameController.LEFT_STICK);
+    	SmartDashboard.putNumber("Right Stick", GameController.RIGHT_STICK);
     }
 
 
