@@ -57,7 +57,10 @@ public class DriveSubsystem extends Subsystem {
 	}
 
 	public double getDistance() {
-		return leftTalon.getSelectedSensorPosition(0);
+		return -leftTalon.getSelectedSensorPosition(0);
+	}
+	public double getDistanceInches() {
+		return Math.round(getDistance() / 53 * 10) / 10.0;
 	}
 
 	@Override
@@ -65,7 +68,7 @@ public class DriveSubsystem extends Subsystem {
 		SmartDashboard.putBoolean("Forward Limit", !forwardLimit.get());
 		SmartDashboard.putNumber("Left Motor", leftTalon.getMotorOutputPercent());
 		SmartDashboard.putNumber("Right Motor", rightTalon.getMotorOutputPercent());
-		SmartDashboard.putNumber("Distance (inches)", getDistance() / 53);
+		SmartDashboard.putNumber("Distance (inches)", getDistanceInches());
 		SmartDashboard.putNumber("Distance (encoder)", getDistance());
 	}
 
