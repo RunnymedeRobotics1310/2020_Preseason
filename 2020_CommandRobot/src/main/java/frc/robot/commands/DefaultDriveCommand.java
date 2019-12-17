@@ -50,7 +50,7 @@ public class DefaultDriveCommand extends Command {
 			motorSpeeds = arcadeDrive.calcMotorSpeed(leftYAxis, rightXAxis);
 		}
 
-		Robot.driveSubsystem.setSpeed(leftYAxis, rightXAxis);
+		Robot.driveSubsystem.setSpeed(motorSpeeds);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
