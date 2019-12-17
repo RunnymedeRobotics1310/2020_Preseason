@@ -23,50 +23,51 @@ import frc.robot.commands.DefaultDriveCommand;
  */
 public class DriveSubsystem extends Subsystem {
 
-    private final TalonSRX leftTalon = new TalonSRX(RobotMap.LEFT_DRIVE_CAN_ADDRESS);
-    private final TalonSRX rightTalon = new TalonSRX(13);
-    private final DigitalInput forwardLimit = new DigitalInput(RobotMap.FORWARD_LIMIT_DIO_PORT);
+	private final TalonSRX leftTalon = new TalonSRX(RobotMap.LEFT_DRIVE_CAN_ADDRESS);
+	private final TalonSRX rightTalon = new TalonSRX(13);
+	private final DigitalInput forwardLimit = new DigitalInput(RobotMap.FORWARD_LIMIT_DIO_PORT);
 
-    public DriveSubsystem() {
-        leftTalon .configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0,  0);
-        leftTalon .setSelectedSensorPosition(0);
-        rightTalon.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0,  0);
-        rightTalon.setSelectedSensorPosition(0);
-    }
+	public DriveSubsystem() {
+		leftTalon .configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0,  0);
+		leftTalon .setSelectedSensorPosition(0);
+		rightTalon.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0,  0);
+		rightTalon.setSelectedSensorPosition(0);
+	}
 
-    @Override
-    public void initDefaultCommand() {
-        setDefaultCommand(new DefaultDriveCommand());
-    }
+	@Override
+	public void initDefaultCommand() {
+		setDefaultCommand(new DefaultDriveCommand());
+	}
 
-    public void setSpeed(MotorSpeeds motorSpeeds) {
-        setSpeed(motorSpeeds.left, motorSpeeds.right);
-    }
+	public void setSpeed(MotorSpeeds motorSpeeds) {
+		setSpeed(motorSpeeds.left, motorSpeeds.right);
+	}
 
-    public void setSpeed(double leftSpeed, double rightSpeed) {
+	public void setSpeed(double leftSpeed, double rightSpeed) {
 
-        if (!forwardLimit.get()) {
-            if (leftSpeed >= 0 || rightSpeed >= 0){
-                leftSpeed = 0;
-                rightSpeed = 0;
-            }
-        }
+		if (!forwardLimit.get()) {
+			if (leftSpeed >= 0 || rightSpeed >= 0){
+				leftSpeed = 0;
+				rightSpeed = 0;
+			}
+		}
 
-        leftTalon.set(ControlMode.PercentOutput, -leftSpeed);
-        rightTalon.set(ControlMode.PercentOutput, rightSpeed);
-    }
+		leftTalon.set(ControlMode.PercentOutput, -leftSpeed);
+		rightTalon.set(ControlMode.PercentOutput, rightSpeed);
+	}
 
-    public double getDistance() {
-        return leftTalon.getSelectedSensorPosition(0);
-    }
+	public double getDistance() {
+		return leftTalon.getSelectedSensorPosition(0);
+	}
 
-    @Override
-    public void periodic() {
-        SmartDashboard.putBoolean("Forward Limit", !forwardLimit.get());
-        SmartDashboard.putNumber("Left Motor", leftTalon.getMotorOutputPercent());
-        SmartDashboard.putNumber("Right Motor", rightTalon.getMotorOutputPercent());
-        SmartDashboard.putNumber("Distance", getDistance());
-    }
+	@Override
+	public void periodic() {
+		SmartDashboard.putBoolean("Forward Limit", !forwardLimit.get());
+		SmartDashboard.putNumber("Left Motor", leftTalon.getMotorOutputPercent());
+		SmartDashboard.putNumber("Right Motor", rightTalon.getMotorOutputPercent());
+		SmartDashboard.putNumber("Distance (inches)", getDistance() * 53);
+		SmartDashboard.putNumber("Distance (encoder)", getDistance());
+	}
 
 
 }

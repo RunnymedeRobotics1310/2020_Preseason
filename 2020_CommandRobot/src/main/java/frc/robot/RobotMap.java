@@ -13,6 +13,11 @@ package frc.robot;
  * the wiring easier and significantly reduces the number of magic numbers
  * floating around.
  */
+
+/**
+ * Encoder counts / meter = 2066
+ * Encoder counts / inch = 53
+ */
 public class RobotMap {
 	/*
 	 * Define all of the drive motors
