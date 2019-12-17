@@ -48,6 +48,7 @@ public class AutonomousCommand extends CommandGroup {
         case AutoSelector.NONE:
             break;
         case AutoSelector.FORWARD_1:
+            addSequential(new DriveDistanceCommand(36));
             break;
         case AutoSelector.FORWARD_2:
             break;
