@@ -7,8 +7,6 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.oi.DriveSelector;
 import frc.robot.oi.GameController;
 
@@ -18,28 +16,32 @@ import frc.robot.oi.GameController;
  */
 public class OI {
 
-	private final GameController driverController = new GameController(RobotMap.DRIVER_CONTROLLER);
-	private DriveSelector driveSelector = new DriveSelector();
-	
-	public double getDriveLeftYAxis() {
-		return driverController.getAxis(GameController.LEFT_STICK,  GameController.Y_AXIS);
-	}
+    private final GameController driverController = new GameController(RobotMap.DRIVER_CONTROLLER);
+    private DriveSelector driveSelector = new DriveSelector();
 
-	public double getDriveRightYAxis() {
-		return driverController.getAxis(GameController.RIGHT_STICK, GameController.Y_AXIS);
-	}
+    public double getDriveLeftYAxis() {
+        return driverController.getAxis(GameController.LEFT_STICK,  GameController.Y_AXIS);
+    }
 
-	public double getDriveRightXAxis() {
-		return driverController.getAxis(GameController.RIGHT_STICK, GameController.X_AXIS);
-	}
+    public double getDriveRightYAxis() {
+        return driverController.getAxis(GameController.RIGHT_STICK, GameController.Y_AXIS);
+    }
 
-	public String getSelectedDrive() {
-		
-		return driveSelector.getDrive();
-		
-		
-		
-	}
+    public double getDriveRightXAxis() {
+        return driverController.getAxis(GameController.RIGHT_STICK, GameController.X_AXIS);
+    }
+
+    public String getSelectedDrive() {
+
+        return driveSelector.getDrive();
+
+
+
+    }
+
+    public void periodic() {
+
+    }
 
 
 }
