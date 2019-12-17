@@ -65,7 +65,7 @@ public class DriveSubsystem extends Subsystem {
 		SmartDashboard.putBoolean("Forward Limit", !forwardLimit.get());
 		SmartDashboard.putNumber("Left Motor", leftTalon.getMotorOutputPercent());
 		SmartDashboard.putNumber("Right Motor", rightTalon.getMotorOutputPercent());
-		SmartDashboard.putNumber("Distance (inches)", getDistance() * 53);
+		SmartDashboard.putNumber("Distance (inches)", getDistance() / 53);
 		SmartDashboard.putNumber("Distance (encoder)", getDistance());
 	}
 
