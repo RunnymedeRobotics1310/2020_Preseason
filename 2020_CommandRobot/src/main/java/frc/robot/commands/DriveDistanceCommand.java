@@ -20,17 +20,22 @@ public class DriveDistanceCommand extends Command {
     // Called repeatedly when this Command is scheduled to run
     @Override
     protected void execute() {
-
+    	Robot.driveSubsystem.setSpeed(0.3, 0.3); 
     }
 
     // Make this return true when this Command no longer needs to run execute()
     @Override
     protected boolean isFinished() {
-
+    	
+    	if (Robot.driveSubsystem.getDistanceInches() >= distanceInches) {
+    		return true;
+    	}
+    	return false;
     }
 
     @Override
     protected void end() {
+    	Robot.driveSubsystem.setSpeed(0.0, 0.0);
 
     }
 
