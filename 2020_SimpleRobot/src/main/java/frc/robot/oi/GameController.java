@@ -192,10 +192,6 @@ public class GameController {
         	out += " Right Stick Button";
         }
         
-        
-        
-		
-
 		return out;
 	}
 }

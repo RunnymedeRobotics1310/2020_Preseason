@@ -7,6 +7,8 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.oi.DriveSelector;
 import frc.robot.oi.GameController;
 
@@ -17,7 +19,8 @@ import frc.robot.oi.GameController;
 public class OI {
 
 	private final GameController driverController = new GameController(RobotMap.DRIVER_CONTROLLER);
-
+	private DriveSelector driveSelector = new DriveSelector();
+	
 	public double getDriveLeftYAxis() {
 		return driverController.getAxis(GameController.LEFT_STICK,  GameController.Y_AXIS);
 	}
@@ -31,23 +34,11 @@ public class OI {
 	}
 
 	public String getSelectedDrive() {
-		MotorSpeeds motorSpeeds = new MotorSpeeds();
-
-
-		if (driveSelector.getDrive().equals(DriveSelector.TANK_DRIVE)) {
-			motorSpeeds = tankDrive.calcMotorSpeed(leftYAxis, rightYAxis);
-		}
-		else {
-			motorSpeeds = arcadeDrive.calcMotorSpeed(leftYAxis, rightXAxis);
-		}
-		if (!forwardLimit.get()) {
-			if (motorSpeeds.left >= 0 || motorSpeeds.right >= 0){
-				motorSpeeds.left = 0;
-				motorSpeeds.right = 0;
-			}
-		}
-
-
+		
+		return driveSelector.getDrive();
+		
+		
+		
 	}
 
 
