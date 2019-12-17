@@ -8,6 +8,7 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.oi.AutoSelector;
 import frc.robot.oi.DriveSelector;
 import frc.robot.oi.GameController;
 
@@ -18,7 +19,9 @@ import frc.robot.oi.GameController;
 public class OI {
 
     private final GameController driverController = new GameController(RobotMap.DRIVER_CONTROLLER);
+
     private DriveSelector driveSelector = new DriveSelector();
+    private AutoSelector autoSelector = new AutoSelector();
 
     public double getDriveLeftYAxis() {
         return driverController.getAxis(GameController.LEFT_STICK,  GameController.Y_AXIS);
@@ -32,12 +35,12 @@ public class OI {
         return driverController.getAxis(GameController.RIGHT_STICK, GameController.X_AXIS);
     }
 
+    public String getSelectedAuto() {
+        return autoSelector.getSelectedAuto();
+    }
+
     public String getSelectedDrive() {
-
         return driveSelector.getDrive();
-
-
-
     }
 
     public void periodic() {
