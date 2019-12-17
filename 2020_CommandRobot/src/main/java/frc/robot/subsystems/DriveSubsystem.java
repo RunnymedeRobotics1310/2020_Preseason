@@ -8,6 +8,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -25,6 +26,13 @@ public class DriveSubsystem extends Subsystem {
     private final TalonSRX leftTalon = new TalonSRX(RobotMap.LEFT_DRIVE_CAN_ADDRESS);
     private final TalonSRX rightTalon = new TalonSRX(13);
     private final DigitalInput forwardLimit = new DigitalInput(RobotMap.FORWARD_LIMIT_DIO_PORT);
+
+    public DriveSubsystem() {
+        leftTalon .configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0,  0);
+        leftTalon .setSelectedSensorPosition(0);
+        rightTalon.configSelectedFeedbackSensor(FeedbackDevice.QuadEncoder, 0,  0);
+        rightTalon.setSelectedSensorPosition(0);
+    }
 
     @Override
     public void initDefaultCommand() {
@@ -46,7 +54,10 @@ public class DriveSubsystem extends Subsystem {
 
         leftTalon.set(ControlMode.PercentOutput, -leftSpeed);
         rightTalon.set(ControlMode.PercentOutput, rightSpeed);
+    }
 
+    public double getDistance() {
+        return leftTalon.getSelectedSensorPosition(0);
     }
 
     @Override
@@ -54,6 +65,7 @@ public class DriveSubsystem extends Subsystem {
         SmartDashboard.putBoolean("Forward Limit", !forwardLimit.get());
         SmartDashboard.putNumber("Left Motor", leftTalon.getMotorOutputPercent());
         SmartDashboard.putNumber("Right Motor", rightTalon.getMotorOutputPercent());
+        SmartDashboard.putNumber("Distance", getDistance());
     }
 
 
